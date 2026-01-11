@@ -1,0 +1,34 @@
+{
+  "name": "therapy-session-processor",
+  "version": "1.0.0",
+  "description": "A full-stack application for processing therapy session audio recordings with AI transcription, summarization, and vector embeddings",
+  "private": true,
+  "scripts": {
+    "setup": "cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd backend && npm run build && cd ../frontend && npm run build",
+    "start:backend": "cd backend && npm run start:dev",
+    "start:frontend": "cd frontend && npm run dev",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "test:backend": "cd backend && npm run test",
+    "test:frontend": "cd frontend && npm run test"
+  },
+  "keywords": [
+    "therapy",
+    "audio-processing",
+    "transcription",
+    "ai",
+    "nestjs",
+    "nextjs",
+    "openai",
+    "supabase"
+  ],
+  "author": "Therapy Session Processor Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}

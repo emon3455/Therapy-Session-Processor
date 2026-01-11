@@ -12,6 +12,14 @@ interface Session {
   transcript?: string;
   summary?: string;
   speaker_count: number;
+  segments?: Array<{
+    id: string;
+    speaker_label: string;
+    start_time: number;
+    end_time: number;
+    text: string;
+    confidence?: number;
+  }>;
 }
 
 interface SessionDetailProps {
@@ -206,7 +214,7 @@ export default function SessionDetail({ session }: SessionDetailProps) {
         {activeTab === 'transcript' && (
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Conversation</h3>
-            {sessionData.segments && sessionData.segments.length > 0 ? (
+            {sessionData?.segments && sessionData?.segments.length > 0 ? (
               <div className="bg-gray-50 rounded-lg p-4 max-h-96 overflow-y-auto">
                 <div className="space-y-4">
                   {(sessionData as DetailedSession).segments!.map((segment, index) => {
@@ -236,11 +244,6 @@ export default function SessionDetail({ session }: SessionDetailProps) {
                           <p className="text-sm leading-relaxed">
                             {segment.text.trim()}
                           </p>
-                          {segment.confidence && (
-                            <div className={`mt-1 text-xs ${speakerColors.accent2}`}>
-                              {(segment.confidence * 100).toFixed(0)}% confidence
-                            </div>
-                          )}
                         </div>
                       </div>
                     );
